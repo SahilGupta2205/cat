@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="my-2 py-2">
+    <div class="container">
+       <div class="row" >
+
+        <form class="row row-cols-lg-auto g-3 align-items-center ">
+            <div class="col-12">
+              <label class="visually-hidden" for="inlineFormInputGroupUsername" >Search</label>
+                <div class="input-group">
+                  <input
+                    class="form-control"
+                    placeholder="Find User" value="{{ request.GET.si }}" type="text" name="si"
+                  />
+                </div>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary" style="border-radius: 14px;">Search</button>
+            </div>
+          </form>
+
+  <div class="row py-3">
+    {% for n1 in myprofile_list %}
+    
+<div class="col-md-4 my-3 ">
+    <div class="card testimonial-card mt-2 mb-3">
+        
+      <div class="card-up aqua-gradient"></div>
+      <a href="{{n1.id}}">
+        <div class="avatar mx-auto white d-flex justify-content-center lign-items-center">
+          
+          {% if n1.pic == "" %}
+          <img src="https://www.cornwallbusinessawards.co.uk/wp-content/uploads/2017/11/dummy450x450.jpg" class="rounded-circle " width="100px" height="100px"
+           >
+           {% else %}
+           <img src="/media/{{n1.pic}}" class="rounded-circle " width="100px" height="100px" >
+           {% endif %}
+          
+        </div>
+      </a>
+        <div class="card-body text-center">
+          <a href="{{n1.id}}">
+          <h4 class="card-title font-weight-bold" href="/cat/myprofile/{{n1.id}}" style="color: rgb(97, 97, 97);">{{n1.name}}</h4>
+        </a>
+          <hr>
+          <p><i class="fas fa-quote-left"></i> {{n1.description}}</p>
+
+          
+         
+            <div>
+                {% if n1.followed %}
+                <a class="btn btn-danger " style="border-radius: 10px;" href='/cat/myprofile/unfollow/{{n1.id}}'>Unfollow</a>
+                {% else %}
+                <a class="btn btn-primary " style="border-radius: 10px;" href='/cat/myprofile/follow/{{n1.id}}'>Follow</a>
+                {% endif %}
+            </div>
+            
+        </div>
+       
+        
+      
+      </div>
+</div>
+{% endfor %}
+</div>
+
+</div>
+</div>
+</main>
+
+
+{% endblock %}

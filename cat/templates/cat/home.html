@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<main class=" my-5" >
+	<div class="container">
+		<div class="row mainposts d-flex align-item-center justify-content-center ">
+
+
+
+{% for n1 in mypost_list %}
+
+<div class="card my-3" style="width: 700px;"  >
+  
+    <div class="card-body d-flex flex-row" >
+
+        {% if n1.uploaded_by.pic %}
+        
+      <img  src="/media/{{n1.uploaded_by.pic}}" class="rounded-circle me-3" height="50px" width="50px" />
+    
+        {% endif %}
+      <div>
+
+        <h5 class="card-title font-weight-bold mb-2">{{n1.uploaded_by}}</h5>
+        
+        <p class="card-text">{{n1.subject}}-{{n1.cr_date | date:"d/m/y"}}</p>
+      </div>
+      
+    </div>
+  
+    
+    <div class="bg-image hover-overlay ripple rounded-0" data-mdb-ripple-color="light">
+      
+      <img class="img-fluid" src="/media/{{n1.pic}}" alt="Card image cap" style="width: 780px; height: 500px;"/>
+     
+      <a href="/cat/mypost/{{n1.id}}">
+        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+      </a>
+    </div>
+    <hr>
+    <div>
+      
+      {% if n1.liked %}
+      <a class="" href='/cat/mypost/unlike/{{n1.id}}' style="width: 10px;"><span class="fas fa-heart" style="font-size:35px;color:red" ></span></a>
+      {% else %}
+      <a class="" href='/cat/mypost/like/{{n1.id}}' style="width: 10px;"><span class="far fa-heart" style="font-size:35px;color:red"></span></a>
+      {% endif %}
+       <strong>{{n1.likedno}} likes</strong>
+      
+      {% if user.is_superuser %}
+              <a class="" href='/cat/mypost/delete/{{n1.id}}'><span class="fa fa-trash" style=" font-size:35px;color:rgb(245, 153, 137)"></span></a>
+      {% endif %}
+
+      
+      <div class="d-flex justify-content-between">
+        <a class="btn btn-link link-primary p-md-1 my-1" data-mdb-toggle="collapse" href="#collapseContent"
+          role="button" aria-expanded="false" aria-controls="collapseContent"></a>
+      <div>
+          
+        </div>
+      </div> 
+    </div>
+  
+   
+</div>
+
+{% endfor %}
+
+</div>
+
+
+
+</div>
+</main>
+
+
+{% endblock %}
+

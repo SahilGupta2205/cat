@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<main class=" my-3 all-form" >
+	<div class="container cat" style="width: 550px;">
+		<div class="row mainposts login-form " >
+
+<h2 class="myhead2" style="text-align: center; font-family: 'Dancing Script', cursive;" >Sign up</h2> 
+
+
+
+	<form enctype="multipart/form-data" method="post" id="form_login1" style="border-style: ridge; padding: 8px;">
+		
+{% csrf_token %}
+{{ site.cat }}
+{{form | crispy}}<br>
+<!-- <label>
+	 
+  </label> -->
+
+  <p><input type="checkbox"  name="remember" style="margin-bottom:15px">  By creating an account you agree to our <a href="https://www.privacypolicygenerator.info/live.php?token=KMrQqFZ1aYeJbqC4Bw5G1pVV5FIHbKn7" target="blank" style="color:dodgerblue">Terms & Privacy</a>.</p>
+  <div style="text-align: center;">
+	
+	<input class="btn btn-success" style="width: 200px;  border-radius: 10px;" type="submit" value="Sign up!" />
+</div>
+</div>
+</form>
+
+	<div style="text-align: center;">
+	<label for="">Already have an account.</label><a class="nav-link" style="color: rgb(3, 40, 247);" href="/accounts/login">Login</a>
+</div>
+
+</div>
+</main> 
+
+{% endblock %}

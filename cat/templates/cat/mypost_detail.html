@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<main class="my-5 py-0" >
+    <div class="container" >
+          <div class="row py-4" >
+<div class="container">
+	<section class="mx-auto my-1" style="width: 500px; ">
+		
+	  <div class="card">
+		<div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+		  <img  src="/media/{{mypost.pic}}" class="img-fluid" style="height: 400px; width:500px;"/>
+		  <a href="">
+			<div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+		  </a>
+		</div>
+		<div class="card-body">
+		  <h5 class="card-title font-weight-bold" style="text-align: center;"><a>{{mypost.subject}}</a></h5>
+		  
+		  <p class="card-text">{{mypost.msg}}</p> 
+		  <p class="mb-2">{{mypost.cr_date | date:"d/m/y"}}</p>
+		  
+		  <hr class="my-4" />
+		<p class="lead"><strong>Comments</strong></p>
+		
+		 
+		  <div class="col-md-6">	
+			<div style="margin:10px;">
+				<!-- Add comments({{ num_comments }}) -->
+					{% if not mypost.comments.all %}
+						<p>Not comments added yet...</p>
+					{% else %}
+					<!-- <p>{{ comments.count }} Comment</p> -->
+						{% for comment in mypost.comments.all %}
+							<div style="padding-bottom: 2px;">
+							<h5><small>{{ comment.commented_by }}</small> - {{ comment.msg }}</h5>
+							<small >({{ comment.cr_date }})</small>
+
+							{% if comment.commented_by == user %}
+						<a class="" style="padding: 10px;" href='/cat/postcomment-delete/{{comment.id}}'><span class="fa fa-trash" style="color: red;"></span></a>
+						{% endif %}
+						</div>
+						
+							<hr>
+							
+						{% endfor %}
+					{% endif %}
+					
+	
+			</div>
+		</div>
+		  <a href="{% url 'add-comment' mypost.id %}" class="btn btn-link link-secondary p-md-1 mb-0">Add Comment</a>
+		</div>
+	  </div>
+	  
+	</section>
+  </div>
+
+  </div>
+  </div>
+  </main>
+
+  
+
+
+{% endblock %}

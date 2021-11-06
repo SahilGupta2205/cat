@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="my-5 py-0" >
+    <div class="container" >
+          <div class="row py-3"  >
+
+    
+    <h1 style="font-size: 40px; margin-left: 30px;" class="p2">Add Comment</h1>
+    <div style="width:60%; height: 200px; ">
+<div class="container m-5">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" style="border-radius: 10px;" type="submit">comment</button>
+        <a href="/cat/home"  class="btn btn-secondary" style="border-radius: 10px;">Back</a>
+        
+    </form>
+</div>
+
+</div>
+</div>
+</div>
+</main>
+
+{% endblock %}

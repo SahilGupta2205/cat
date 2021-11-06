@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<main class="p-5" >
+<div class="row">
+	<div class="col-sm-6 offset-sm-3" >
+	<h1 class="myhead2">Profile Update</h1>
+		<hr>
+		<form enctype="multipart/form-data" method="post" style="width: 600px;">
+		{% csrf_token %}
+		{{form | crispy}}
+		<div style="padding-top: 5px;">
+		<input class="btn btn-success btn-sm" style="border-radius: 10px;" type="submit" value="Update" />
+		<a href="/cat/home" class="btn btn-primary" style="border-radius: 10px;">Back</a>
+		<a href="/accounts/password_change/" class="btn btn-secondary float-right" style="border-radius: 10px;" >Change Password</a>
+		</div>	
+	</form>
+	
+	</div>
+</div>
+
+
+
+</main>
+{% endblock %}

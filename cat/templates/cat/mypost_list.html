@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<main class="my-2 py-1" >
+    <div class="container" >
+          <div class="row py-2" >
+            <div class="row g-0">
+              <div class="col-md-8">
+                <div class="card-body">
+
+                  <form class="row row-cols-lg-auto g-3 align-items-center ">
+                    <div class="col-12">
+                      <label class="visually-hidden" for="inlineFormInputGroupUsername" >Search</label>
+                        <div class="input-group">
+                          <input
+                            class="form-control"
+                            placeholder="Find User" value="{{ request.GET.si }}" type="text" name="si"
+                          />
+                        </div>
+                    </div>
+                    <div class="col-12">
+                      <button type="submit" class="btn btn-primary" style="border-radius: 14px;">Search</button>
+                  <a class="btn btn-secondary"style="width: 130px; height: 10px; border-radius: 10px;" href="/cat/mypost/create">Add Post</a>
+
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          
+            <div class="row py-3" >
+              {% for n1 in mypost_list %}
+              <div class="col-md-4 my-3" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
+                <div>
+                    <strong>
+                    <td>{{n1.subject}}</td>
+                    <td>{{n1.cr_date | date:"d/m/y"}}</td>
+                    </strong>
+                    <a class="" style="padding: 10px;" href='/cat/mypost/delete/{{n1.id}}'><span class="fa fa-trash" style="color: red;"></span></a>
+                </div>
+                <hr>
+                <a href="/cat/mypost/{{n1.id}}">
+                  <img
+                  alt="example"
+                  style="border: 1px solid black; background-color: white; border-radius: 10px;"
+                  src="/media/{{n1.pic}}"
+                  width="350px" height="300px"
+                  />
+                </a>
+              </div>
+              
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+</main>
+
+  
+
+{% endblock %}

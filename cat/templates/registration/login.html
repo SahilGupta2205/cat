@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class=" my-5 all-form " style="padding-top: 60px;" >
+	<div class="container cat" style="width: 600px; padding-top: 100px;">
+		<div class="row mainposts login-form">
+			
+			<h2 class="myhead2" style="color: #2e3847; font-family: 'Dancing Script', cursive;"   >Log in to your account</h2>
+			<p>To log in, please fill in these text fields with your username and pasword.</p> 
+
+		{% load crispy_forms_tags %}
+
+		<form  enctype="multipart/form-data" method="post" id="form_login" style="border-style: ridge; padding: 8px;" >
+			
+			{% csrf_token %}
+			{{form | crispy}}
+			<br>
+			
+				<div class="d-flex justify-content-center pt-1 mb-4">
+					<button class="btn btn-primary btn-rounded" style="border-radius: 10px; width:40	0px;" type="submit" value="Login" >Log in</button>
+				  </div>
+				<a class="link float-right" href="/accounts/password/reset/">Forgot password? Click here.</a>
+				
+				</div>
+			</div>
+			
+		</form>
+		<p class="text-center"  ><a style="color: rgb(3, 40, 247);" href="/accounts/register/">Create an Account</a></p>
+
+		</div>
+	</div>
+</main>
+
+{% endblock %}

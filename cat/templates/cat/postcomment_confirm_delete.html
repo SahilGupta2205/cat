@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+<main class="my-5 py-2" >
+    <div class="container" >
+          <div class="row py-2" >
+<main class="p-5">
+<div class="row">
+	<div class="col-sm-6 offset-sm-3">
+	<h3 class="myhead2">Are you sure you want to delete..</h3>
+	<h6>After deleting you want be able to retrive it.</h6>
+		
+		<form enctype="multipart/form-data" method="post">
+		{% csrf_token %}
+		{{form | crispy}}
+		<div class="w3-show-inline-block">
+			<div class="w3-bar">
+			  <button class="btn btn-danger btn-lg active"  style="border-radius: 10px;"  type="submit">Yes</button>
+				<a href="/cat/mypost/" class="btn btn-secondary btn-lg active" style="border-radius: 10px; ">Back</a>
+	
+			</div>
+		</div>
+		</form>
+
+	
+	</div>
+</div>
+</main>
+</div>
+</div>
+</main>
+{% endblock %}
